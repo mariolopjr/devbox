@@ -10,6 +10,16 @@ COPY ../scripts/devbox.sh /
 COPY ../scripts/distrobox-shims.sh /
 COPY ../packages/devbox.packages /
 
+# ublue staging repo needed for ghostty, etc
+dnf -y copr enable ublue-os/staging
+
+# common packages installed to desktops
+dnf install -y \
+	ublue-brew
+
+# only the packages above should come from testing
+dnf -y copr disable ublue-os/staging
+
 # Run the setup scripts
 RUN /devbox.sh
 RUN rm /devbox.sh /distrobox-shims.sh /devbox.packages
