@@ -11,4 +11,5 @@ COPY ../scripts/distrobox-shims.sh /
 COPY ../packages/devbox.packages /
 
 # Run the setup scripts
-RUN rm /boxkit.sh /distrobox-shims.sh /boxkit.packages
+RUN /devbox.sh
+RUN rm /devbox.sh /distrobox-shims.sh /devbox.packages
