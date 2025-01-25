@@ -7,7 +7,6 @@ LABEL com.github.containers.toolbox="true" \
 
 # Copy the setup scripts and package list
 COPY ../scripts/devbox.sh /
-COPY ../scripts/distrobox-shims.sh /
 COPY ../packages/devbox.packages /
 
 # Run the setup scripts
