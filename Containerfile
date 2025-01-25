@@ -6,10 +6,14 @@ LABEL com.github.containers.toolbox="true" \
       maintainer="mario@techmunchies.net"
 
 # Copy the setup scripts and package list
-COPY ../scripts/devbox.sh /
-COPY ../scripts/distrobox-shims.sh /
-COPY ../packages/devbox.packages /
+COPY ./scripts/devbox.sh /
+COPY ./scripts/distrobox-shims.sh /
+COPY ./packages/devbox.packages /
+COPY ./files /
 
 # Run the setup scripts
 RUN /devbox.sh
 RUN rm /devbox.sh /distrobox-shims.sh /devbox.packages
+
+# linuxbrew setup
+RUN mv /home/linuxbrew /home/homebrew

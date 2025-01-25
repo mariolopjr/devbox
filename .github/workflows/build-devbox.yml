@@ -26,9 +26,6 @@ jobs:
       id-token: write
     strategy:
       fail-fast: false
-      matrix:
-        containerfile: 
-          - devbox
     steps:
       # Clone code to runner
       - name: Checkout
@@ -50,8 +47,8 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           containerfiles: |
-            ./ContainerFiles/${{ matrix.containerfile }}
-          image: ${{ matrix.containerfile }}
+            ./Containerfile
+          image: devbox
           tags: ${{ env.IMAGE_TAGS }}
           labels: ${{ steps.meta.outputs.labels }}
           oci: true
