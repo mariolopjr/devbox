@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora-toolbox:latest
+FROM cgr.dev/chainguard/wolfi-base:latest
 
 LABEL com.github.containers.toolbox="true" \
       usage="This image is meant to be used with the toolbox or distrobox command" \
@@ -9,7 +9,6 @@ LABEL com.github.containers.toolbox="true" \
 COPY ../scripts/devbox.sh /
 COPY ../scripts/distrobox-shims.sh /
 COPY ../packages/devbox.packages /
-COPY ../packages/devbox.staging-packages /
 
 # Run the setup scripts
 RUN /devbox.sh
