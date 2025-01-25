@@ -12,6 +12,7 @@ direnv
 fd
 fish
 fzf
+gh
 git
 jq
 just
