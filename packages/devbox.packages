@@ -5,6 +5,7 @@ chezmoi
 cosign
 direnv
 fzf
+git
 just
 make
 ncurses
