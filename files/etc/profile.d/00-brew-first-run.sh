@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if test "$(id -u)" -gt "0"; then
 	blue=$(printf '\033[38;5;32m')
 	bold=$(printf '\033[1m')
@@ -6,7 +8,7 @@ if test "$(id -u)" -gt "0"; then
 	if test ! -d /home/linuxbrew/.linuxbrew; then
 		name="$(hostname -s)"
 		linuxbrew_home="${XDG_DATA_HOME:-$HOME/.local/share}"/devbox/"${name}"
-		printf "Setting up Linuxbrew...\t\t\t\t "
+		printf "Setting up linuxbrew...\t\t\t\t "
 		if test ! -d "${linuxbrew_home}"; then
 			mkdir -p "${linuxbrew_home}"
 			if test -d "${XDG_DATA_HOME:-$HOME/.local/share}"/devbox/.linuxbrew; then
@@ -23,8 +25,9 @@ if test "$(id -u)" -gt "0"; then
 		printf "%s[ OK ]%s\n" "${blue}" "${normal}"
 	fi
 
+	# TODO: set up fish completions
 	if test ! -d /usr/local/share/bash-completion/completions; then
-		printf "Setting up Tab-Completions...\t\t\t "
+		printf "Setting up tab completions...\t\t\t "
 		sudo mkdir -p /usr/local/share/bash-completion
 		sudo mount --bind /run/host/usr/share/bash-completion /usr/local/share/bash-completion
 		if test -x /run/host/usr/bin/ujust; then
