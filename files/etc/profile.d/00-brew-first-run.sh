@@ -2,7 +2,7 @@
 
 source /etc/profile.d/_utils.sh
 
-if "$(id -u)" -eq "0"; then
+if test "$(id -u)" -eq "0"; then
 	return 0
 fi
 
@@ -16,7 +16,7 @@ fi
 
 name="$(hostname -s)"
 linuxbrew_home="${XDG_DATA_HOME:-$HOME/.local/share}"/devbox/"${name}"
-printf "Setting up linuxbrew...\t\t\t\t "
+printf "\nSetting up linuxbrew...\t\t\t\t "
 if test ! -d "${linuxbrew_home}"; then
 	mkdir -p "${linuxbrew_home}"
 	if test -d "${XDG_DATA_HOME:-$HOME/.local/share}"/devbox/.linuxbrew; then
@@ -53,7 +53,7 @@ EOF
 print_ok
 
 # install brew packages
-printf "Installing brew packages...\t\t\t\t"
+printf "Installing brew packages...\t\t\t\t "
 brew bundle --no-lock --quiet --file=/dev/stdin <<EOF &>/dev/null
 brew "f3"
 brew "fisher"
@@ -65,6 +65,5 @@ EOF
 print_ok
 
 printf "\nlinuxbrew setup complete!\n\n"
-print_ok
 
 sudo touch /etc/linuxbrew.firstrun
