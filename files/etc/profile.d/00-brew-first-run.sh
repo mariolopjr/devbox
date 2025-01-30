@@ -45,7 +45,7 @@ fi
 
 # add brew taps
 printf "Adding brew taps...\t\t\t\t "
-brew bundle --no-lock --quiet --file=/dev/stdin <<EOF
+brew bundle --no-lock --file=/dev/stdin <<EOF &>/dev/null
 tap "homebrew/aliases"
 tap "homebrew/bundle"
 tap "homebrew/services"
@@ -54,7 +54,7 @@ print_ok
 
 # install brew packages
 printf "Installing brew packages...\t\t\t\t"
-brew bundle --no-lock --quiet --file=/dev/stdin <<EOF
+brew bundle --no-lock --quiet --file=/dev/stdin <<EOF &>/dev/null
 brew "f3"
 brew "fisher"
 brew "mise"
