@@ -1,6 +1,12 @@
 #!/bin/bash
 
-source /etc/profile.d/_utils.sh
+blue=$(printf '\033[38;5;32m')
+bold=$(printf '\033[1m')
+normal=$(printf '\033[0m')
+
+print_ok() {
+	printf "%s[ OK ]%s\n" "${blue}" "${normal}"
+}
 
 if test "$(id -u)" -eq "0"; then
 	return 0
