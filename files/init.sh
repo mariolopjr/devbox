@@ -8,16 +8,12 @@ print_ok() {
 	printf "%s[ OK ]%s\n" "${blue}" "${normal}"
 }
 
-if test "$(id -u)" -eq "0"; then
-	return 0
-fi
-
 if test -f /etc/linuxbrew.firstrun; then
-	return 0
+	exit 0
 fi
 
 if test -d /home/linuxbrew/.linuxbrew; then
-	return 0
+	exit 0
 fi
 
 name="$(hostname -s)"
@@ -59,7 +55,7 @@ EOF
 print_ok
 
 # install brew packages
-printf "Installing brew packages...\t\t\t\t "
+printf "Installing brew packages...\t\t\t "
 brew bundle --no-lock --quiet --file=/dev/stdin <<EOF &>/dev/null
 brew "f3"
 brew "fisher"
