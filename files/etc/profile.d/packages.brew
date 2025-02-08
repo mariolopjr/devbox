@@ -1,6 +1,5 @@
 tap "homebrew/aliases"
 brew "f3"
-brew "fisher"
 brew "mise"
 brew "ncdu"
 brew "smartmontools"
