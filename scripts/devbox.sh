@@ -13,6 +13,3 @@ git clone https://github.com/89luca89/distrobox.git --single-branch /tmp/distrob
 	chmod +x /usr/bin/host-spawn &&
 	rm -rf /tmp/distrobox &&
 	ln -fs /bin/sh /usr/bin/sh
-
-# remove fish build-in distrobox fish prompt
-sed -i '/function fish_prompt/,/end/d' /etc/fish/conf.d/distrobox_config.fish

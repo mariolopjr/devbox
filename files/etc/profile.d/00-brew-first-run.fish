@@ -16,6 +16,11 @@ if test -d /home/linuxbrew/.linuxbrew
     exit 0
 end
 
+# remove fish built-in distrobox fish prompt
+printf "\nremoving distrobox fish prompt...\t\t\t\t "
+sudo sed -i '/function fish_prompt/,/end/d' /etc/fish/conf.d/distrobox_config.fish
+print_ok
+
 set name (hostname -s)
 set linuxbrew_home (string join '' (set -q XDG_DATA_HOME; and echo $XDG_DATA_HOME; or echo $HOME/.local/share))"/devbox/$name"
 printf "\nSetting up linuxbrew...\t\t\t\t "
@@ -51,5 +56,6 @@ brew bundle --no-lock --file=/etc/profile.d/packages.brew > /dev/null 2>&1
 print_ok
 
 printf "\nlinuxbrew setup complete!\n\n"
+
 
 sudo touch /etc/linuxbrew.firstrun
