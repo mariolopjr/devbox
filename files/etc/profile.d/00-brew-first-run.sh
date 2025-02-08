@@ -45,25 +45,9 @@ if test ! -d /usr/local/share/bash-completion/completions; then
 	print_ok
 fi
 
-# add brew taps
-printf "Adding brew taps...\t\t\t\t "
-brew bundle --no-lock --file=/dev/stdin <<EOF &>/dev/null
-tap "homebrew/aliases"
-tap "homebrew/bundle"
-tap "homebrew/services"
-EOF
-print_ok
-
 # install brew packages
 printf "Installing brew packages...\t\t\t "
-brew bundle --no-lock --quiet --file=/dev/stdin <<EOF &>/dev/null
-brew "f3"
-brew "fisher"
-brew "mise"
-brew "ncdu"
-brew "smartmontools"
-brew "wakeonlan"
-EOF
+brew bundle --no-lock --file=/etc/profile.d/packages.brew >/dev/null 2>&1
 print_ok
 
 printf "\nlinuxbrew setup complete!\n\n"
