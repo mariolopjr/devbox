@@ -47,21 +47,25 @@ end
 
 # add brew taps
 printf "Adding brew taps...\t\t\t\t "
-brew bundle --no-lock --file=/dev/stdin <<EOF > /dev/null 2>&1
-tap "homebrew/aliases"
-EOF
+begin
+	brew bundle --no-lock --file=/dev/stdin > /dev/null 2>&1
+	echo "\
+		tap homebrew/aliases"
+end | source
 print_ok
 
 # install brew packages
 printf "Installing brew packages...\t\t\t "
-brew bundle --no-lock --quiet --file=/dev/stdin <<EOF > /dev/null 2>&1
-brew "f3"
-brew "fisher"
-brew "mise"
-brew "ncdu"
-brew "smartmontools"
-brew "wakeonlan"
-EOF
+begin
+	brew bundle --no-lock --quiet --file=/dev/stdin > /dev/null 2>&1
+	echo "\
+		brew f3
+		brew fisher
+		brew mise
+		brew ncdu
+		brew smartmontools
+		brew wakeonlan"
+end | source
 print_ok
 
 printf "\nlinuxbrew setup complete!\n\n"
